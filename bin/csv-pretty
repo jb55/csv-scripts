@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-csv-column "$@" | cat -n | less -R -S
+csv-delim "$@" | csv-prettyt

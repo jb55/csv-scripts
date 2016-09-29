@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+csv-delim "$@" | csv-column | cat -n | less -R -S
