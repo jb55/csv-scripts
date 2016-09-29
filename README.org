@@ -12,7 +12,7 @@
 
   Install with make (default PREFIX is /usr/local)
 
-    $ PREFIX=/opt/local make install
+: $ PREFIX=/opt/local make install
 
 ** Tools
 
@@ -30,8 +30,8 @@
 
 Sum the Credit column:
 
-    $ csv-sum $(csv-header "Credit" file.tsv)
+: $ csv-sum $(csv-header "Credit" file.tsv)
 
 Cut columns 2,3:
 
-    $ csv-delim file.csv | csv-cut -f2,3
+: $ csv-delim file.csv | csv-cut -f2,3
