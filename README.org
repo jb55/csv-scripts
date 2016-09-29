@@ -14,6 +14,10 @@
 
 : $ PREFIX=/opt/local make install
 
+  Install with nix
+
+: $ nix-env -f https://jb55.com/pkgs -iA csv-scripts csv-delim
+
 ** Tools
 
 | Tool        | Description                             |
