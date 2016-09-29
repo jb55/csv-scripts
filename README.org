@@ -1,0 +1,37 @@
+
+* csv-scripts
+
+  A collection of helper scripts for CSV files. It uses
+  [[https://github.com/jb55/csv-delim][csv-delim]] under the hood to normalize CSV
+  files into tab deliminated CSVs, which makes it easy for fast, existing linux
+  tools to work over them.
+
+** Installation
+
+  Dependencies: [[https://github.com/jb55/csv-delim][csv-delim]]
+
+  Install with make (default PREFIX is /usr/local)
+
+    $ PREFIX=/opt/local make install
+
+** Tools
+
+| Tool        | Description                             |
+|-------------+-----------------------------------------|
+| csv-cut     | cut configured for tabs                 |
+| csv-awk     | awk configured for tabs                 |
+| csv-column  | column table layout configured for tabs |
+| csv-pretty  | csv-column + numbered lines + less -S   |
+| csv-headers | List headers with their index           |
+| csv-header  | Get the index for a specific header     |
+| csv-sum     | Sum a column (takes a column index)     |
+
+** Examples
+
+Sum the Credit column:
+
+    $ csv-sum $(csv-header "Credit" file.tsv)
+
+Cut columns 2,3:
+
+    $ csv-delim file.csv | csv-cut -f2,3

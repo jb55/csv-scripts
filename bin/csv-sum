@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+csv-cut -f $1 "${2:-/dev/stdin}" | awk '{total = total + $1}END{print total}'
