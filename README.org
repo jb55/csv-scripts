@@ -29,6 +29,7 @@
 | csv-headers | List headers with their index           |
 | csv-header  | Get the index for a specific header     |
 | csv-sum     | Sum a column (takes a column index)     |
+| csv-select  | Select column headers by name           |
 
 ** Examples
 
