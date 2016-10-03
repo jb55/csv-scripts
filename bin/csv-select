@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+IFS=$'\r'
+
+columns=${*:1:$(($# - 1))}
+file=${@:$#}
+
+function join_by {
+  separator="$1"
+  shift
+  bar=$(printf "${separator}%s" "$@")
+  bar="${bar:${#separator}}"
+  printf "$bar\n"
+}
+
+grepfor=$(join_by '$|' ${columns[@]})
+
+cuts=$(csv-headers "$file" | csv-awk '$2 ~ /^'"$grepfor"'$/ { print $1 }' | sed 's,^[[:space:]]*,,' | paste -sd,)
+
+csv-delim "$file" | csv-cut -f$cuts
