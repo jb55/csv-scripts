@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+FILE=$(mktemp)
+
+if [ -z "$1" ]
+then
+  cat | csv-delim > "$FILE"
+else
+  csv-delim "$1" > "$FILE"
+fi
+
+
+csv-headers "$FILE" | \
+while IFS=$'\t' read -r -a cols
+do
+  n=${cols[0]}
+  name=${cols[1]}
+  top=$(csv-cut -f${n} "$FILE" | sort | uniq -c | sort -nr | head -n3 | paste -s -d $'\t')
+  printf "%s\t%s\n" "$name" "$top"
+done
+
+
+rm -f "$FILE"
